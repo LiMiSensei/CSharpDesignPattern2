@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace 反射_单例1
+namespace 反射_单例2
 {
     class Program
     {
@@ -14,10 +14,19 @@ namespace 反射_单例1
             //获取私有的构造函数
             ConstructorInfo[] cons = type.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
             LazySingHungry lay2 = (LazySingHungry)cons[0].Invoke(null);
+            //标记位已经变成了ture
+            
+            //反射破坏标记位
+            FieldInfo fieldInfo = type.GetField("isOK", BindingFlags.NonPublic | BindingFlags.Static);
+            fieldInfo.SetValue("isOK", false);
+            
+            
             LazySingHungry lay3 = (LazySingHungry)cons[0].Invoke(null);
             //我们的反射破坏了单例，如何避免反射破坏单例
             Console.WriteLine(lay1.GetType());
             Console.WriteLine(lay2.GetType());
+
+           
         }
 
 

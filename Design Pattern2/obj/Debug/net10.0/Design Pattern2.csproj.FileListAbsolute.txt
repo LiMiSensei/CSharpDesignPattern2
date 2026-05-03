@@ -12,3 +12,4 @@ C:\Users\LiMi\RiderProjects\Design Pattern2\Design Pattern2\obj\Debug\net10.0\re
 C:\Users\LiMi\RiderProjects\Design Pattern2\Design Pattern2\obj\Debug\net10.0\Design Pattern2.pdb
 C:\Users\LiMi\RiderProjects\Design Pattern2\Design Pattern2\obj\Debug\net10.0\Design Pattern2.genruntimeconfig.cache
 C:\Users\LiMi\RiderProjects\Design Pattern2\Design Pattern2\obj\Debug\net10.0\ref\Design Pattern2.dll
+C:\Users\LiMi\RiderProjects\Design Pattern2\Design Pattern2\obj\Debug\net10.0\Design Pattern2.sourcelink.json
