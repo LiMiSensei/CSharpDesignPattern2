@@ -11,7 +11,6 @@
             singer.SingASong(new EnglishSong());
             singer.SingASong(new ChineseSong());
         }
-        
     }
 
     //把可变抽象成接口
@@ -20,17 +19,17 @@
     {
         string GetSongWords();
     }
-    
-    
-    public class ChineseSong:ISongWords
+
+
+    public class ChineseSong : ISongWords
     {
         public string GetSongWords()
         {
             return "中国歌曲";
         }
     }
-    
-    public class EnglishSong:ISongWords
+
+    public class EnglishSong : ISongWords
     {
         public string GetSongWords()
         {
@@ -38,18 +37,15 @@
         }
     }
     //=====================================================//
-    
-    
+
+
     //Singer作为高层模块，目前是严格依赖底层模块的d
-    public class Singer//高层模块
+    public class Singer //高层模块
     {
-        
         //底层模块
         public void SingASong(ISongWords words)
         {
             Console.WriteLine("歌手正在唱：" + words.GetSongWords());
         }
     }
-    
-    
 }

@@ -6,8 +6,6 @@ namespace 单例设计模式总结
     {
         static void Main19(string[] args)
         {
-          
-           
         }
 
         public class HungryClass
@@ -17,6 +15,7 @@ namespace 单例设计模式总结
                 //只要在外部调用GetSIngleHungryO这个方法的时候，才会加载内部类的成员
                 return InnerClass.HungryClass;
             }
+
             //在类的内部写一个
             public static class InnerClass
             {
@@ -24,7 +23,5 @@ namespace 单例设计模式总结
                 public static readonly HungryClass HungryClass = new HungryClass();
             }
         }
-       
-      
     }
 }

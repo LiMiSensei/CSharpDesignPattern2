@@ -13,8 +13,6 @@
             SingHungry singHungry1 = SingHungry.GetInstance();
             SingHungry singHungry2 = SingHungry.GetInstance();
             SingHungry singHungry3 = SingHungry.GetInstance();
-            
-            
         }
 
 

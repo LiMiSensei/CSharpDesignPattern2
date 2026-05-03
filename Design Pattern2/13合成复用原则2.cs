@@ -4,9 +4,8 @@
     {
         static void Main13(string[] args)
         {
-            
         }
-        
+
         //============================ 泛化&实现 ==============================//
         //2实现 继承接口
         public interface IClimb
@@ -30,23 +29,26 @@
             }
         }
 
-        public class Tiger : Animal,IClimb
+        public class Tiger : Animal, IClimb
         {
             private string _name;
             private Leg _leg;
-            private Food _food;//5 关联关系
+            private Food _food; //5 关联关系
+
             public Tiger(Leg leg)
-            {//创建老虎就得创建腿 --》这就是组合
+            {
+                //创建老虎就得创建腿 --》这就是组合
                 _leg = leg;
             }
 
             public Tiger()
-            {//放在构造函数里面也是一种
+            {
+                //放在构造函数里面也是一种
                 _leg = new Leg();
             }
+
             public void Climb()
             {
-                
             }
         }
 
@@ -62,12 +64,14 @@
             //4聚合关系
             private Tiger[] _tigers;
         }
+
         //5 关联关系
         public class Food
         {
             public string FoodName;
             public string FoodColor;
         }
+
         //依赖
         public class Water
         {

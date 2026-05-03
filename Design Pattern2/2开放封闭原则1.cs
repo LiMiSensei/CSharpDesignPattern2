@@ -17,7 +17,7 @@
 
             BonkClient bonkClient = new BonkClient();
             bonkClient.BankType = "存款";
-            
+
             BonkStuff bonkStuff = new BonkStuff();
             bonkStuff.HandleProcess(bonkClient);
         }
@@ -35,7 +35,7 @@
             public void HandleProcess(BonkClient bonkClient)
             {
                 //调用银行的业务系统，处理我们的用户需求
-                
+
                 //依托答辩 低端和冗余
                 switch (bonkClient.BankType)
                 {
@@ -67,6 +67,7 @@
             {
                 Console.WriteLine("处理用户的转账");
             }
+
             //基金
             public void ByJiJin()
             {

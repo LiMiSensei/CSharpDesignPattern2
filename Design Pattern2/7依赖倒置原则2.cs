@@ -9,7 +9,7 @@
             stuet.SetCar(new Benz());
             stuet.Drive();
         }
-        
+
         public interface ICar
         {
             void Run();
@@ -21,7 +21,7 @@
             void SetCar(ICar car);
             void Drive();
         }
-        
+
         public class Benz : ICar
         {
             public void Run()
@@ -29,9 +29,11 @@
                 Console.WriteLine("奔驰在奔跑");
             }
         }
+
         public class Stuent : IDrive
         {
             private ICar car;
+
             public void SetCar(ICar car)
             {
                 this.car = car;
@@ -43,8 +45,4 @@
             }
         }
     }
-
-    
-    
-    
 }

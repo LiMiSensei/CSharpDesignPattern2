@@ -5,7 +5,7 @@ namespace 工厂设计模式与反射
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main22(string[] args)
         {
             Console.WriteLine("请输入操作数1");
             double d1 = Convert.ToDouble(Console.ReadLine());
@@ -18,44 +18,17 @@ namespace 工厂设计模式与反射
 
             //根据用户的操作符来创建一个创建对象的工厂对象
 
-            ICalFactory cFactory = null;
-
             //抽象：描述了一段关系 运算符 和具体工厂对象的对应关系
             //Attribute特性,就是一块狗皮膏药
-            cFactory = oper switch
-            {
-                "+" => new AddFactory(),
-                "-" => new SubFactory(),
-                "*" => new MulFactory(),
-                "/" => new DivFactory(),
-            };
 
-            ICalculator ctx = cFactory.GetCalFactory();
-            Console.WriteLine($"计算结果为{ctx.GetResult(d1, d2)}");
+            ReflectioinFactory reflectioinFactory = new();
+            ICalFactory cFactory = reflectioinFactory.GetFac(oper);
+            ICalculator calculator = cFactory.GetCalFactory();
+            var res = calculator.GetResult(d1, d2);
+
+
+            Console.WriteLine($"计算结果为{res}");
         }
-    }
-
-    //1,创建对象所有的逻辑，都集合到了一个方法中，风险比较高
-    //2，现在是抽象依赖了细节，我们需要让细节依赖抽象
-    public class CalFactory
-    {
-        public static ICalculator GetCalculator(string oper)
-        {
-            return oper switch
-            {
-                "+" => new Add(),
-                "-" => new Sub(),
-                "*" => new Mul(),
-                "/" => new Div(),
-            };
-        }
-    }
-
-//=======================================================================================//
-    //1,把创建对象的这件事，封装成抽象
-    public interface ICalFactory
-    {
-        ICalculator GetCalFactory();
     }
 
 //======================================== 狗皮膏药 =======================================//
@@ -70,29 +43,46 @@ namespace 工厂设计模式与反射
         }
     }
 
-    //2:程序运行后拿到关系，并返回相应对象
+//=============================  通过反射 string对应狗屁膏药方法 ===============================//
     public class ReflectioinFactory
     {
-        Dictionary<string, ICalFactory> factories = new Dictionary<string, ICalFactory>();
+        Dictionary<string, ICalFactory> dic = new();
 
         public ReflectioinFactory()
         {
             //1,拿到正在运行的程序集
             Assembly assembly = Assembly.GetExecutingAssembly();
             //AddFactory,SubFactory,MulFactory,DivFactory 拿他们
-            foreach (Type type in assembly.GetTypes()) //拿到所有的类型
+            foreach (var type in assembly.GetTypes()) //拿到所有的类型
             {
-                if (typeof(ICalculator).IsAssignableFrom(type) && !type.IsInterface)
+                if (typeof(ICalFactory).IsAssignableFrom(type) && !type.IsInterface)
                 {
                     //拿狗皮膏药
                     OperToFactory otf = type.GetCustomAttribute<OperToFactory>();
-                    if(otf != null){}
+                    if (otf != null)
+                    {
+                        //给键值对集合赋值了
+                        dic[otf.Oper] = Activator.CreateInstance(type) as ICalFactory;
+                    }
                 }
             }
         }
+
+        public ICalFactory GetFac(string s)
+        {
+            if (dic.ContainsKey(s))
+                return dic[s];
+            return null;
+        }
     }
 
-//=======================================================================================//
+//==================================== 工厂方法 =====================================//
+    //1,把创建对象的这件事，封装成抽象
+    public interface ICalFactory
+    {
+        ICalculator GetCalFactory();
+    }
+
     [OperToFactory("+")]
     public class AddFactory : ICalFactory
     {
@@ -130,7 +120,7 @@ namespace 工厂设计模式与反射
     }
 
 
-//=======================================================================================//
+//==================================== 实际方法 ==========================================//
     public interface ICalculator
     {
         double GetResult(double num1, double num2);

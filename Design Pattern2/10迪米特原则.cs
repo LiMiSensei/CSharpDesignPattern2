@@ -14,12 +14,13 @@
         {
             Console.WriteLine("保存当前程序");
         }
+
         //2，关闭屏幕
         public void CloseScreen()
         {
             Console.WriteLine("关闭屏幕");
         }
-        
+
         //3，关闭电源
         public void ShutDown()
         {
@@ -41,7 +42,6 @@
         {
             //不符合迪米特原则
             computer.CloseComputer();
-           
         }
     }
 }

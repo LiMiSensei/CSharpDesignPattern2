@@ -4,13 +4,6 @@
     {
         static void Main8(string[] args)
         {
-           
         }
-        
-       
     }
-
-    
-    
-    
 }

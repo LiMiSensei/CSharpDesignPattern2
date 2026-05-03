@@ -9,13 +9,13 @@ namespace 工厂方法设计模式
         {
             Console.WriteLine("请输入操作数1");
             double d1 = Convert.ToDouble(Console.ReadLine());
-           
+
             Console.WriteLine("请输入操作数2");
             double d2 = Convert.ToDouble(Console.ReadLine());
-           
+
             Console.WriteLine("请输入操作符");
-            string oper =  Console.ReadLine();
-            
+            string oper = Console.ReadLine();
+
             //根据用户的操作符来创建一个创建对象的工厂对象
 
             ICalFactory cFactory = null;
@@ -28,7 +28,6 @@ namespace 工厂方法设计模式
             };
             ICalculator ctx = cFactory.GetCalFactory();
             Console.WriteLine($"计算结果为{ctx.GetResult(d1, d2)}");
-            
         }
     }
 
