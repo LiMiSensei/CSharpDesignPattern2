@@ -2,7 +2,7 @@
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main30(string[] args)
         {
             Resume resume = new Resume();
             resume.SetInfo("孙权",28,'男');
