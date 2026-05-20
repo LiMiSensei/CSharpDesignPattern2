@@ -1,4 +1,4 @@
-﻿namespace 编程思想
+﻿namespace 单一职责原则
 {
 /*
 
@@ -151,34 +151,22 @@
 
 
             public void HangUpPhoneNumber(string number)
-            {
-                hangUp.HangUp(number);
-            }
+                => hangUp.HangUp(number);
 
             public void DialPhoneNumber(string number)
-            {
-                dial.DiolNumber(number);
-            }
+                => dial.DiolNumber(number);
 
             public void SendMessageNumber(string number)
-            {
-                sendMessage.SendMessage(number);
-            }
+                => sendMessage.SendMessage(number);
 
             public void ReciveMessageNumber(string number)
-            {
-                reciveMessage.ReciveMessage(number);
-            }
+                => reciveMessage.ReciveMessage(number);
 
             public void PowerDownNumber()
-            {
-                powerDown.PowerDown();
-            }
+                => powerDown.PowerDown();
 
             public void PowerOnNumber()
-            {
-                powerOn.PowerOn();
-            }
+                => powerOn.PowerOn();
         }
     }
 }
